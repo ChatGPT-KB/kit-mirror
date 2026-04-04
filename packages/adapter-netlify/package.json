@@ -1,0 +1,68 @@
+{
+	"name": "@sveltejs/adapter-netlify",
+	"version": "6.0.4",
+	"description": "A SvelteKit adapter that creates a Netlify app",
+	"keywords": [
+		"adapter",
+		"deploy",
+		"hosting",
+		"netlify",
+		"svelte",
+		"sveltekit"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sveltejs/kit.git",
+		"directory": "packages/adapter-netlify"
+	},
+	"license": "MIT",
+	"homepage": "https://svelte.dev/docs/kit/adapter-netlify",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"import": "./index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"types": "index.d.ts",
+	"files": [
+		"files",
+		"index.js",
+		"index.d.ts",
+		"ambient.d.ts"
+	],
+	"scripts": {
+		"dev": "rollup -cw",
+		"build": "rollup -c",
+		"check": "tsc",
+		"lint": "prettier --check .",
+		"format": "pnpm lint --write",
+		"test": "pnpm test:integration",
+		"test:unit": "vitest run",
+		"test:integration": "pnpm build && pnpm -r --workspace-concurrency 1 --filter=\"./test/**\" test",
+		"prepublishOnly": "pnpm build"
+	},
+	"dependencies": {
+		"@iarna/toml": "^2.2.5",
+		"esbuild": "^0.25.4"
+	},
+	"devDependencies": {
+		"@netlify/dev": "catalog:",
+		"@netlify/edge-functions": "catalog:",
+		"@netlify/functions": "catalog:",
+		"@netlify/node-cookies": "^0.1.0",
+		"@netlify/types": "^2.1.0",
+		"@rollup/plugin-commonjs": "catalog:",
+		"@rollup/plugin-json": "catalog:",
+		"@rollup/plugin-node-resolve": "catalog:",
+		"@sveltejs/kit": "workspace:^",
+		"@types/node": "catalog:",
+		"rollup": "^4.59.0",
+		"typescript": "catalog:",
+		"vitest": "catalog:"
+	},
+	"peerDependencies": {
+		"@sveltejs/kit": "^2.31.0"
+	}
+}
